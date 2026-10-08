@@ -1,0 +1,76 @@
+# """The CSV provides insights into how different feature subsets perform in polynomial regression (degree 3).
+# Here's a breakdown:
+# 1. num_features: The number of input features used.
+# 2. features: The specific features included in the subset (e.g., x1+x2+x3).
+# 3. degree_3_cv_rmse: The Root Mean Squared Error (RMSE) obtained using 10-fold cross-validation for that specific feature subset with a 3rd-degree polynomial.
+
+# Interpretation:
+# The goal is to find a feature subset that minimizes the degree_3_cv_rmse.
+# A lower RMSE indicates a better fit of the model to the data.
+# In this dataset, the subset with all 6 features (x1+x2+x3+x4+x5+x6) has the lowest RMSE (0.9892), suggesting that using all features results in the best predictive performance for polynomial regression of degree 3.
+# Other subsets with fewer features generally have higher RMSE values, indicating that removing features degrades the model's performance. """
+
+num_features,features,degree_3_cv_rmse
+6,x1+x2+x3+x4+x5+x6,0.9892
+5,x1+x2+x3+x5+x6,1.3083
+5,x1+x3+x4+x5+x6,1.5906
+5,x2+x3+x4+x5+x6,1.7614
+4,x1+x3+x5+x6,1.776
+5,x1+x2+x4+x5+x6,1.8528
+5,x1+x2+x3+x4+x6,1.8895
+4,x2+x3+x5+x6,1.94
+4,x2+x3+x4+x6,2.0239
+5,x1+x2+x3+x4+x5,2.0282
+4,x1+x2+x3+x6,2.0422
+4,x1+x2+x5+x6,2.0762
+4,x1+x4+x5+x6,2.0916
+4,x3+x4+x5+x6,2.1333
+3,x2+x3+x6,2.1421
+4,x1+x2+x3+x5,2.1447
+4,x1+x3+x4+x5,2.2479
+3,x3+x5+x6,2.2551
+3,x1+x5+x6,2.2575
+4,x1+x3+x4+x6,2.2839
+4,x1+x2+x4+x5,2.3232
+3,x1+x3+x6,2.3528
+3,x1+x3+x5,2.3543
+3,x3+x4+x6,2.3778
+4,x2+x4+x5+x6,2.4145
+4,x1+x2+x4+x6,2.4267
+2,x3+x6,2.4372
+4,x2+x3+x4+x5,2.4747
+3,x1+x4+x5,2.4787
+3,x1+x2+x5,2.4839
+3,x2+x3+x5,2.5459
+3,x1+x2+x6,2.5541
+3,x2+x4+x6,2.5709
+3,x3+x4+x5,2.5974
+2,x1+x5,2.6144
+3,x2+x5+x6,2.6162
+3,x1+x4+x6,2.6347
+3,x4+x5+x6,2.6617
+2,x3+x5,2.678
+2,x2+x6,2.7138
+2,x1+x6,2.7166
+3,x2+x4+x5,2.7653
+2,x4+x6,2.7748
+2,x5+x6,2.7913
+2,x2+x3,2.8167
+3,x1+x2+x3,2.818
+4,x1+x2+x3+x4,2.8312
+3,x2+x3+x4,2.8313
+1,x6,2.8342
+2,x4+x5,2.9071
+2,x2+x5,2.9129
+3,x1+x3+x4,2.9139
+2,x3+x4,2.9219
+2,x1+x3,2.9322
+1,x3,2.9346
+3,x1+x2+x4,3.0136
+1,x5,3.0269
+2,x1+x2,3.0334
+2,x2+x4,3.0382
+1,x2,3.0581
+2,x1+x4,3.0654
+1,x4,3.0786
+1,x1,3.1097

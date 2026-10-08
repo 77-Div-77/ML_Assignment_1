@@ -1,0 +1,27 @@
+{
+  "problem": "var2",
+  "dataset": "Var2",
+  "roll_number": "IMT2024068",
+  "features": [
+    "x1",
+    "x2",
+    "x3"
+  ],
+  "degree": 14,
+  "non_bias_terms": 679,
+  "active_terms": 298,
+  "model_type": "Lasso",
+  "lambda1": 0.002,
+  "lambda2": 0.0,
+  "alpha": 0.001,
+  "train_mse": 0.160769,
+  "train_rmse": 0.40096,
+  "train_r2": 0.996401,
+  "oof_mse": 0.228068,
+  "oof_rmse": 0.477565,
+  "oof_std": 0.025388,
+  "oof_se": 0.008028,
+  "oof_r2": 0.994895,
+  "cv5_rmse": 0.483356,
+  "intercept": 2.375287
+}
