@@ -60,7 +60,7 @@ Each problem requires:
 ML_Assignment/
     ├── README.md                           # Complete project documentation
     ├── requirements.txt                    # Python dependencies
-    ├── report.pdf                          # Exactly 5-page academic PDF report
+    ├── IMT2024068_Report.pdf               # Exactly 5-page academic PDF report
     ├── Assignment1_Polynomial_Regression.ipynb # Reproducible Jupyter Notebook
     │
     ├── Dataset/                            # Provided dataset directory
@@ -151,7 +151,7 @@ The notebook executes end-to-end and reproduces all metrics and predictions iden
 | **Var1 Prediction Count** | Exactly 1,000 rows | 1,000 rows (`IMT2024068_pred_var1.csv`) |
 | **Var2 Prediction Count** | Exactly 1,000 rows | 1,000 rows (`IMT2024068_pred_var2.csv`) |
 | **Prediction Columns** | Single column named `y` | Single column `y`, no NaNs |
-| **Report Length** | 4 to 5 pages | Exactly 5 pages (`report.pdf`) |
+| **Report Length** | 4 to 5 pages | Exactly 5 pages (`IMT2024068_Report.pdf`) |
 | **Report Title** | Exact format | `Assignment-1: Polynomial Regression and Regularization` |
 | **Student Metadata** | Exact format | Course Name: Machine Learning \| Name: Divyanshu Ghosh \| Roll Number: IMT2024068 |
 | **Header / Footer** | Clean layout | Header: `Divyanshu Ghosh` \| Footer: `Machine Learning Assignment 1: Polynomial Regression & Regularization` |
