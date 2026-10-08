@@ -57,16 +57,7 @@ Each problem requires:
 ## 3. Directory & File Structure
 
 ```
-Assignment_1/
-├── IMT2024068_train_var1.csv               # Input: Var1 training data (1,000 samples)
-├── IMT2024068_test_var1.csv                # Input: Var1 unlabelled test data (1,000 samples)
-├── IMT2024068_train_var2.csv               # Input: Var2 training data (1,000 samples)
-├── IMT2024068_test_var2.csv                # Input: Var2 unlabelled test data (1,000 samples)
-├── IMT2024068_pred_var1.csv                # Final Var1 test predictions copy (1,000 rows, header 'y')
-├── IMT2024068_pred_var2.csv                # Final Var2 test predictions copy (1,000 rows, header 'y')
-├── IMT2024068_submission.zip               # Submission package archive
-│
-└── ML_Assignment/
+ML_Assignment/
     ├── README.md                           # Complete project documentation
     ├── requirements.txt                    # Python dependencies
     ├── report.pdf                          # Exactly 5-page academic PDF report
@@ -101,6 +92,7 @@ Assignment_1/
         ├── var2_model.joblib               # Saved scikit-learn final model pipeline
         ├── var2_model_meta.json            # Final hyperparameters and evaluation metrics
         ├── polynomial_coefficients_var2.csv# Saved polynomial coefficients
+        ├── var2_feature_subsets.csv        # 10-fold CV RMSE for all feature subsets
         ├── var2_degree_sweep.csv           # 10-fold CV RMSE across degrees 1 to 15 (with OLS cond. No.)
         ├── degree_error_plot.png           # Plot: CV RMSE vs degree (OLS, Ridge, LASSO, optimal deg 14)
         ├── r2_score_plot.png               # Plot: 10-fold CV R^2 score vs degree
