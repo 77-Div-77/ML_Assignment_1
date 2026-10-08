@@ -36,7 +36,7 @@ Each problem requires:
 - **Training Metrics:** MSE = 0.2667 | RMSE = 0.5164 | $R^2$ = 0.9722
 - **10-Fold CV (OOF) Metrics:** MSE = 0.3333 | RMSE = 0.5773 $\pm$ 0.0129 | $R^2$ = 0.9652
 - **5-Fold CV Check RMSE:** 0.5857
-- **Generated Prediction File:** `IMT2024068_pred_var1.csv` (1,000 rows, header `y`)
+- **Generated Prediction File:** `Prediction_Data/IMT2024068_pred_var1.csv` (1,000 rows, header `y`)
 
 ### Var2 Summary (3 Input Features)
 - **Selected Polynomial Degree:** Degree 14
@@ -50,7 +50,7 @@ Each problem requires:
 - **Training Metrics:** MSE = 0.1608 | RMSE = 0.4010 | $R^2$ = 0.9964
 - **10-Fold CV (OOF) Metrics:** MSE = 0.2281 | RMSE = 0.4776 $\pm$ 0.0080 | $R^2$ = 0.9949
 - **5-Fold CV Check RMSE:** 0.4834
-- **Generated Prediction File:** `IMT2024068_pred_var2.csv` (1,000 rows, header `y`)
+- **Generated Prediction File:** `Prediction_Data/IMT2024068_pred_var2.csv` (1,000 rows, header `y`)
 
 ---
 
@@ -62,14 +62,25 @@ Assignment_1/
 ├── IMT2024068_test_var1.csv                # Input: Var1 unlabelled test data (1,000 samples)
 ├── IMT2024068_train_var2.csv               # Input: Var2 training data (1,000 samples)
 ├── IMT2024068_test_var2.csv                # Input: Var2 unlabelled test data (1,000 samples)
-├── IMT2024068_pred_var1.csv                # Final Var1 test predictions (1,000 rows, header 'y')
-├── IMT2024068_pred_var2.csv                # Final Var2 test predictions (1,000 rows, header 'y')
+├── IMT2024068_pred_var1.csv                # Final Var1 test predictions copy (1,000 rows, header 'y')
+├── IMT2024068_pred_var2.csv                # Final Var2 test predictions copy (1,000 rows, header 'y')
+├── IMT2024068_submission.zip               # Submission package archive
 │
 └── ML_Assignment/
     ├── README.md                           # Complete project documentation
     ├── requirements.txt                    # Python dependencies
     ├── report.pdf                          # Exactly 5-page academic PDF report
     ├── Assignment1_Polynomial_Regression.ipynb # Reproducible Jupyter Notebook
+    │
+    ├── Dataset/                            # Provided dataset directory
+    │   ├── IMT2024068_train_var1.csv       # Var1 training data (1,000 samples)
+    │   ├── IMT2024068_test_var1.csv        # Var1 unlabelled test data (1,000 samples)
+    │   ├── IMT2024068_train_var2.csv       # Var2 training data (1,000 samples)
+    │   └── IMT2024068_test_var2.csv        # Var2 unlabelled test data (1,000 samples)
+    │
+    ├── Prediction_Data/                    # Generated test prediction files
+    │   ├── IMT2024068_pred_var1.csv        # Final Var1 test predictions (1,000 rows, header 'y')
+    │   └── IMT2024068_pred_var2.csv        # Final Var2 test predictions (1,000 rows, header 'y')
     │
     ├── var1/
     │   ├── train_var1.py                   # Var1 full training & artifact generation
@@ -79,7 +90,6 @@ Assignment_1/
     │   ├── polynomial_coefficients_var1.csv# Saved polynomial coefficients
     │   ├── var1_feature_subsets.csv        # 10-fold CV RMSE for all 63 feature subsets
     │   ├── var1_degree_sweep.csv           # 10-fold CV RMSE across degrees 1 to 8
-    │   ├── IMT2024068_pred_var1.csv        # Var1 test predictions copy
     │   ├── degree_error_plot.png           # Plot: CV RMSE vs degree (OLS deg 1-5, Ridge, LASSO)
     │   ├── r2_score_plot.png               # Plot: 10-fold CV R^2 score vs degree
     │   ├── regularization_heatmap.png      # Plot: 2D regularization grid (lambda1 vs lambda2)
@@ -92,7 +102,6 @@ Assignment_1/
         ├── var2_model_meta.json            # Final hyperparameters and evaluation metrics
         ├── polynomial_coefficients_var2.csv# Saved polynomial coefficients
         ├── var2_degree_sweep.csv           # 10-fold CV RMSE across degrees 1 to 15 (with OLS cond. No.)
-        ├── IMT2024068_pred_var2.csv        # Var2 test predictions copy
         ├── degree_error_plot.png           # Plot: CV RMSE vs degree (OLS, Ridge, LASSO, optimal deg 14)
         ├── r2_score_plot.png               # Plot: 10-fold CV R^2 score vs degree
         ├── regularization_heatmap.png      # Plot: 2D regularization grid at degree 14
@@ -115,36 +124,31 @@ Core dependencies:
 - `scikit-learn >= 1.3.0`
 - `matplotlib >= 3.7.0`
 - `seaborn >= 0.12.0`
-- `reportlab >= 4.0.0`
 - `joblib >= 1.3.0`
 
 ---
 
 ## 5. Execution Instructions
 
-### A. Run Var1 Training Pipeline
+### A. Run Inference Scripts (Predictions)
+```bash
+python var1/predict_var1.py
+python var2/predict_var2.py
+```
+This immediately generates the predictions into `Prediction_Data/IMT2024068_pred_var1.csv` and `Prediction_Data/IMT2024068_pred_var2.csv`.
+
+### B. Run Training Pipelines
 ```bash
 python var1/train_var1.py
-```
-This evaluates feature subsets, compiles the degree sweep, fits the final Degree 5 LASSO model, evaluates metrics, outputs `IMT2024068_pred_var1.csv`, and generates all Var1 figures.
-
-### B. Run Var2 Training Pipeline
-```bash
 python var2/train_var2.py
 ```
-This compiles the degree 1–15 sweep, fits the final Degree 14 LASSO model, evaluates metrics, outputs `IMT2024068_pred_var2.csv`, and generates all Var2 figures.
+This runs full feature subset analysis, degree sweeps, fits final models, and saves evaluation metrics and plots.
 
 ### C. Run the Jupyter Notebook
 ```bash
 jupyter notebook Assignment1_Polynomial_Regression.ipynb
 ```
 The notebook executes end-to-end and reproduces all metrics and predictions identically.
-
-### D. Compile the PDF Report
-```bash
-python generate_report.py
-```
-This generates `report.pdf` (exactly 5 pages, fully conforming to assignment specifications).
 
 ---
 

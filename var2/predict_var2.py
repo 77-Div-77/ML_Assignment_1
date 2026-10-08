@@ -12,14 +12,16 @@ import joblib
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
-DATA_DIR = os.path.abspath(os.path.join(PROJECT_ROOT, ".."))
+DATA_DIR = os.path.join(PROJECT_ROOT, "Dataset") if os.path.exists(os.path.join(PROJECT_ROOT, "Dataset")) else os.path.abspath(os.path.join(PROJECT_ROOT, ".."))
 
 TEST_FILE = os.path.join(DATA_DIR, "IMT2024068_test_var2.csv")
 MODEL_FILE = os.path.join(SCRIPT_DIR, "var2_model.joblib") if os.path.exists(os.path.join(SCRIPT_DIR, "var2_model.joblib")) else os.path.join(SCRIPT_DIR, "polynomial_model_var2.pkl")
 META_FILE = os.path.join(SCRIPT_DIR, "var2_model_meta.json")
 
-OUT_PRED_DIR = os.path.join(SCRIPT_DIR, "IMT2024068_pred_var2.csv")
-OUT_PRED_ROOT = os.path.join(DATA_DIR, "IMT2024068_pred_var2.csv")
+PRED_DIR = os.path.join(PROJECT_ROOT, "Prediction_Data")
+os.makedirs(PRED_DIR, exist_ok=True)
+OUT_PRED_FILE = os.path.join(PRED_DIR, "IMT2024068_pred_var2.csv")
+PARENT_PRED_FILE = os.path.join(PROJECT_ROOT, "..", "IMT2024068_pred_var2.csv")
 
 def main():
     print("=" * 60)
@@ -56,8 +58,9 @@ def main():
     assert not np.isnan(y_pred).any(), "Error: NaN values detected in predictions!"
 
     df_out = pd.DataFrame({"y": y_pred})
-    df_out.to_csv(OUT_PRED_DIR, index=False)
-    df_out.to_csv(OUT_PRED_ROOT, index=False)
+    df_out.to_csv(OUT_PRED_FILE, index=False)
+    if os.path.exists(os.path.dirname(PARENT_PRED_FILE)):
+        df_out.to_csv(PARENT_PRED_FILE, index=False)
 
     print("\nVerification Passed:")
     print(f"  Total test samples: {len(df_out)}")
@@ -65,8 +68,7 @@ def main():
     print(f"  Prediction range:   [{y_pred.min():.4f}, {y_pred.max():.4f}]")
     print(f"  Mean prediction:    {y_pred.mean():.4f}")
     print(f"  Std prediction:     {y_pred.std():.4f}")
-    print(f"  Output saved to:    {OUT_PRED_DIR}")
-    print(f"                      {OUT_PRED_ROOT}")
+    print(f"  Output saved to:    {OUT_PRED_FILE}")
     print("=" * 60)
 
 if __name__ == "__main__":

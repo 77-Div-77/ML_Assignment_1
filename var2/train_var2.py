@@ -39,7 +39,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 # Paths
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
-DATA_DIR = os.path.dirname(PROJECT_ROOT)
+DATA_DIR = os.path.join(PROJECT_ROOT, "Dataset") if os.path.exists(os.path.join(PROJECT_ROOT, "Dataset")) else os.path.dirname(PROJECT_ROOT)
 
 TRAIN_PATH = os.path.join(DATA_DIR, "IMT2024068_train_var2.csv")
 TEST_PATH = os.path.join(DATA_DIR, "IMT2024068_test_var2.csv")
